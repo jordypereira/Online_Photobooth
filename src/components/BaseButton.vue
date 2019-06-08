@@ -1,5 +1,5 @@
 <template>
-  <button class="bg-indigo-500 hover:bg-indigo-300 text-white p-4">
+  <button class="bg-indigo-500 hover:bg-indigo-300 text-white p-4" v-on="$listeners">
     <slot/>
   </button>
 </template>

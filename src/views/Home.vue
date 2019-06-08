@@ -1,6 +1,6 @@
 <template>
   <div class="w-screen">
-    <h1 class="text-center text-5xl m-20">Welcome to the online photobooth</h1>
+    <BaseHeading>Welcome to the online photobooth</BaseHeading>
     <div class="text-center">
       <p>The online photobooth is an application to quickly setup a photobooth using a tablet, laptop or a raspberry pi.</p>
       <p>You can even use a Canon Camera or your webcam.</p>
@@ -9,7 +9,7 @@
       <p>The use can choose to take a single picture or a gif containing 4 pictures.</p>
     </div>
     <div class="flex justify-around mt-8">
-      <BaseButton>I know how it works and want to get started.</BaseButton>
+      <BaseButton @click="$router.push('/login')">I know how it works and want to get started.</BaseButton>
       <BaseButton>I need additional info how to use this application.</BaseButton>
     </div>
   </div>
