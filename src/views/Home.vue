@@ -1,7 +1,14 @@
 <template>
-  <div class="container">
-    <h1 class="text-center text-5xl mb-24">Welcome to the online photobooth</h1>
-    <div class="flex justify-around mt-4">
+  <div class="w-screen">
+    <h1 class="text-center text-5xl m-20">Welcome to the online photobooth</h1>
+    <div class="text-center">
+      <p>The online photobooth is an application to quickly setup a photobooth using a tablet, laptop or a raspberry pi.</p>
+      <p>You can even use a Canon Camera or your webcam.</p>
+      <p>Login with your google account and create a shared album. All pictures taken will end up in there!</p>
+      <p>Add some frames that can be used to decorate the images.</p>
+      <p>The use can choose to take a single picture or a gif containing 4 pictures.</p>
+    </div>
+    <div class="flex justify-around mt-8">
       <BaseButton>I know how it works and want to get started.</BaseButton>
       <BaseButton>I need additional info how to use this application.</BaseButton>
     </div>
