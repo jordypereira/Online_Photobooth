@@ -1,8 +1,11 @@
 <template>
   <div class="flex justify-center items-center mt-24">
-    <BaseButton>
-      <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure">Login</GoogleLogin>
-    </BaseButton>
+    <GoogleLogin
+      class="bg-indigo-500 hover:bg-indigo-300 text-white p-4"
+      :params="params"
+      :onSuccess="onSuccess"
+      :onFailure="onFailure"
+    >Login</GoogleLogin>
   </div>
 </template>
 

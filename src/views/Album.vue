@@ -2,8 +2,13 @@
   <div>
     <BaseHeading>Choose or create an album</BaseHeading>
     <div>
-      <ul>
-        <li v-for="album in albums" :key="album.id">{{ album.title }}</li>
+      <ul class="text-center">
+        <li
+          v-for="album in albums"
+          :key="album.id"
+          class="hover:text-blue-700 cursor-pointer"
+          @click="setSelectedAlbum(album)"
+        >{{ album.title }}</li>
       </ul>
     </div>
   </div>
@@ -42,6 +47,10 @@ export default {
           this.$router.push('/login');
         }
       }
+    },
+    setSelectedAlbum(album) {
+      this.$store.commit('SET_SELECTED_ALBUM', album);
+      this.$router.push('/start')
     }
   }
 }

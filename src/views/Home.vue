@@ -6,10 +6,10 @@
       <p>You can even use a Canon Camera or your webcam.</p>
       <p>Login with your google account and create a shared album. All pictures taken will end up in there!</p>
       <p>Add some frames that can be used to decorate the images.</p>
-      <p>The use can choose to take a single picture or a gif containing 4 pictures.</p>
+      <p>The user can choose to take a single picture or a gif containing 4 pictures.</p>
     </div>
     <div class="flex justify-around mt-8">
-      <BaseButton @click="$router.push('/login')">I know how it works and want to get started.</BaseButton>
+      <BaseButton @click="$router.push('/settings')">I know how it works and want to get started.</BaseButton>
       <BaseButton>I need additional info how to use this application.</BaseButton>
     </div>
   </div>
