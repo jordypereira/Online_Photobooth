@@ -49,15 +49,30 @@
       </div>
       <div class="flex flex-col">
         <BaseHeading :level="3">Formats</BaseHeading>
-        <label>
-          Single pictures
-          <input type="checkbox" name="single" v-model="format.single">
-        </label>
+        <div>
+          <BaseButton
+            :activated="format.single"
+            @click="format.single = !format.single"
+            class="mr-4"
+          >Activate Single Pictures</BaseButton>
 
-        <label>
-          Gif
-          <input type="checkbox" name="gif" v-model="showGif">
-        </label>
+          <BaseButton :activated="showGif" @click="showGif = !showGif">Activate Gifs</BaseButton>
+        </div>
+      </div>
+      <div class="flex flex-col items-center">
+        <BaseHeading :level="3">Filters</BaseHeading>
+        <div>
+          <BaseButton :activated="showFilters" @click="showFilters = !showFilters">Activate Filters</BaseButton>
+        </div>
+        <div v-if="showFilters" class="flex flex-wrap justify-center" style="max-width: 60vw;">
+          <BaseButton
+            class="m-4"
+            v-for="filter in availableFilters"
+            :key="filter"
+            @click="addFilter(filter)"
+            :activated="filters.includes(filter)"
+          >{{filter}}</BaseButton>
+        </div>
       </div>
     </div>
     <div class="flex justify-around">
@@ -81,6 +96,17 @@ export default {
         single: false,
       },
       showGif: false,
+      availableFilters: [
+        'normal',	'clarendon',	'gingham',	'moon',	'lark',	'reyes',
+'juno',	'slumber',	'crema',	'ludwig',	'aden',	'perpetua',
+'amaro',	'mayfair',	'rise',	'hudson',	'valencia',	'xpro2',
+'sierra',	'willow',	'lofi',	'inkwell', 'hefe',	'nashville',
+'stinson',	'vesper',	'earlybird', 'brannan',	'sutro',	'toaster',
+'walden',	'1977',	'kelvin',	'maven',	'ginza',	'skyline',
+'dogpatch',	'brooklyn',	'helena',	'ashby',	'charmes',
+      ],
+      showFilters: false,
+      filters: []
     }
   },
   components: {
@@ -116,7 +142,16 @@ export default {
       this.$store.commit('SET_FFMPEG', this.ffmpeg)
       this.$store.commit('SET_FRAMES', this.frames)
       this.$router.push('/login')
+    },
+    addFilter(filter) {
+      if(this.filters.includes(filter)) {
+        this.filters = this.filters.filter(item => item !== filter)
+      } else {
+        this.filters = [...this.filters, filter]
+      }
     }
   }
 }
 </script>
+
+

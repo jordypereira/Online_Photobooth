@@ -1,7 +1,7 @@
 <template>
   <button
-    class="bg-indigo-500 hover:bg-indigo-300 text-white shadow-md"
-    :class="[ClassSize]"
+    class="hover:bg-indigo-300 text-white shadow-md"
+    :class="[classSize, classActivated]"
     v-on="$listeners"
   >
     <slot/>
@@ -16,9 +16,13 @@ export default {
         type: String,
         default: 'normal'
       },
+      activated: {
+        type: Boolean,
+        default: false,
+      }
   },
   computed: {
-    ClassSize() {
+    classSize() {
       const { size } = this;
 
       if(size === 'large') {
@@ -26,7 +30,16 @@ export default {
       }
 
       return 'p-4';
-    }
+    },
+    classActivated() {
+      const { activated } = this;
+
+      if(activated) {
+        return 'bg-red-800';
+      }
+
+      return 'bg-indigo-500';
+    },
   }
 }
 </script>
