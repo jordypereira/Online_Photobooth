@@ -46,8 +46,7 @@ export default {
         return 'm-4'
       } 
       return 'm-12'
-    },
+    }
   }
 }
 </script>
-
