@@ -45,7 +45,7 @@ export default {
       if(this.level === 5) {
         return 'm-4'
       } 
-      return 'm-20'
+      return 'm-12'
     },
   }
 }

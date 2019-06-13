@@ -14,6 +14,7 @@ export default new Vuex.Store({
     camera: getStorageItem('camera', ''),
     ffmpeg: getStorageItem('ffmpeg' , ''),
     frames: getStorageItem('frames' , []),
+    settings: getStorageItem('settings' , {})
   },
   mutations: {
     SET_GOOGLE_USER(state, payload) {
@@ -35,6 +36,10 @@ export default new Vuex.Store({
     SET_FRAMES(state, payload) {
       state.frames = payload
       localStorage.setItem('frames', JSON.stringify(payload))
+    },
+    settings(state, payload) {
+      state.frames = payload
+      localStorage.setItem('settings', JSON.stringify(payload))
     },
   },
   actions: {

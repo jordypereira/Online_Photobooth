@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div class="flex justify-around mt-4">
+      <BaseButton @click="$router.go(-1)">Back</BaseButton>
+      <BaseButton @click="save">Continue</BaseButton>
+    </div>
     <BaseHeading>Settings</BaseHeading>
     <div class="text-center">
       <div class="flex flex-col">
@@ -57,6 +61,12 @@
           >Activate Single Pictures</BaseButton>
 
           <BaseButton :activated="showGif" @click="showGif = !showGif">Activate Gifs</BaseButton>
+          <input
+            v-if="showGif"
+            v-model="format.gif"
+            type="number"
+            class="ml-4 w-20 p-2 border border-indigo-500"
+          >
         </div>
       </div>
       <div class="flex flex-col items-center">
@@ -74,10 +84,10 @@
           >{{filter}}</BaseButton>
         </div>
       </div>
-    </div>
-    <div class="flex justify-around">
-      <BaseButton @click="$router.go(-1)">Back</BaseButton>
-      <BaseButton @click="save">Continue</BaseButton>
+      <div class="flex justify-around">
+        <BaseButton @click="$router.go(-1)">Back</BaseButton>
+        <BaseButton @click="save">Continue</BaseButton>
+      </div>
     </div>
   </div>
 </template>
@@ -112,6 +122,14 @@ export default {
   components: {
     FileUpload
   },
+  mounted() {
+    const settings = this.$store.state.settings;
+    this.camera = settings.camera || '';
+    this.ffmpeg = settings.ffmpeg || '';
+    this.showFilters = settings.filters.length > 0 ? true : false;
+    this.filters = settings.filters || [];
+    this.frames = settings.frames || [];
+  },
   methods: {
     inputFilter(newFile, oldFile, prevent) {
       if (newFile && !oldFile) {
@@ -138,9 +156,16 @@ export default {
       }
     },
     async save() {
-      this.$store.commit('SET_CAMERA', this.camera)
-      this.$store.commit('SET_FFMPEG', this.ffmpeg)
-      this.$store.commit('SET_FRAMES', this.frames)
+      this.$store.commit('settings', {
+        camera: this.camera,
+        ffmpeg: this.ffmpeg,
+        format: {
+          'single': this.format.single,
+          'gif': showGif ? this.format.gif : false
+          },
+        filters: this.showFilters ? this.filters : false,
+        frames: this.frames.length > 0 ? this.frames : false
+      })
       this.$router.push('/login')
     },
     addFilter(filter) {
