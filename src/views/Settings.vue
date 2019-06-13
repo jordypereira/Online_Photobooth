@@ -161,7 +161,7 @@ export default {
         ffmpeg: this.ffmpeg,
         format: {
           'single': this.format.single,
-          'gif': showGif ? this.format.gif : false
+          'gif': this.showGif ? this.format.gif : false
           },
         filters: this.showFilters ? this.filters : false,
         frames: this.frames.length > 0 ? this.frames : false

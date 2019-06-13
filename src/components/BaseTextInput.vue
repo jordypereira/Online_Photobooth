@@ -4,7 +4,7 @@
     class="border border-blue-500"
     :placeholder="placeholder"
     :value="value"
-    @onChange="this.$emit('onChange')"
+    @input="$emit('input', $event.target.value)"
   >
 </template>
 

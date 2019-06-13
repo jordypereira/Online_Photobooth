@@ -11,9 +11,6 @@ export default new Vuex.Store({
   state: {
     googleUser: getStorageItem('googleUser', {}),
     selectedAlbum: getStorageItem('selectedAlbum', {}),
-    camera: getStorageItem('camera', ''),
-    ffmpeg: getStorageItem('ffmpeg' , ''),
-    frames: getStorageItem('frames' , []),
     settings: getStorageItem('settings' , {})
   },
   mutations: {
@@ -24,18 +21,6 @@ export default new Vuex.Store({
     SET_SELECTED_ALBUM(state, payload) {
       state.selectedAlbum = payload
       localStorage.setItem('selectedAlbum', JSON.stringify(payload))
-    },
-    SET_CAMERA(state, payload) {
-      state.camera = payload
-      localStorage.setItem('camera', JSON.stringify(payload))
-    },
-    SET_FFMPEG(state, payload) {
-      state.ffmpeg = payload
-      localStorage.setItem('ffmpeg', JSON.stringify(payload))
-    },
-    SET_FRAMES(state, payload) {
-      state.frames = payload
-      localStorage.setItem('frames', JSON.stringify(payload))
     },
     settings(state, payload) {
       state.frames = payload

@@ -5,6 +5,9 @@ import Login from './views/Login.vue'
 import Album from './views/Album.vue'
 import Start from './views/Start.vue'
 import Settings from './views/Settings.vue'
+import Review from './views/Review.vue'
+import Preview from './views/Preview.vue'
+import Final from './views/Final.vue'
 
 Vue.use(Router)
 
@@ -36,6 +39,21 @@ export default new Router({
       path: '/settings',
       name: 'settings',
       component: Settings
+    },
+    {
+      path: '/review',
+      name: 'review',
+      component: Review
+    },
+    {
+      path: '/preview',
+      name: 'preview',
+      component: Preview
+    },
+    {
+      path: '/final',
+      name: 'final',
+      component: Final
     },
   ]
 })
